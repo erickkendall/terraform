@@ -6,8 +6,8 @@ variable "AWS_REGION" {
 variable "AMIS" {
   type = map
   default = {
-    us-east-1 = "ami-046842448f9e74e7d"
-    us-east-2 = "ami-0367b500fdcac0edc"
+    us-east-1 = "ami-002cc39e7bf021a77"
+    us-east-2 = "ami-0fb3bb3e1ae2da0be"
   }
 }
 variable "PATH_TO_PRIVATE_KEY" {
@@ -17,5 +17,5 @@ variable "PATH_TO_PUBLIC_KEY" {
   default = "mykey.pub"
 }
 variable "INSTANCE_USERNAME" {
-  default = "ubuntu"
+  default = "ec2-user"
 }

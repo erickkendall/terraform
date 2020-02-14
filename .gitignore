@@ -12,9 +12,13 @@ crash.log
 # .tfvars files are managed as part of configuration and so should be included in
 # version control.
 #
+<<<<<<< HEAD
 */terraform.tfvars
 */mykey
 */mykey.pub
+=======
+*/terrafomr.tfvars
+>>>>>>> parent of adb6dbe... Put terraform.tfvars back with blank credentials to test
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in

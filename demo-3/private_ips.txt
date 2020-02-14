@@ -1,0 +1,4 @@
+aws_instance.example.private_ip
+aws_instance.example.private_ip
+aws_instance.example.private_ip
+aws_instance.example.private_ip
