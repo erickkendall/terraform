@@ -1,7 +1,8 @@
 **Working through Terraform Udemy Course**
 
- 1. demo-1	- simple example of using Te
+ 1. demo-1	- simple example using terraform to standup t2.micro
+ 2. demo-2 - similar to demo-2; now installing NGINX
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk4NDQyMTEyXX0=
+eyJoaXN0b3J5IjpbMTkzNzkwMzI5OV19
 -->
