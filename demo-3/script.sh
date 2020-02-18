@@ -1,12 +1,14 @@
 #!/bin/bash
-apt-get install httpd php php-mysql wget -y
-cd /var/www/html
-wget https://wordpress.org/wordpress-5.1.1.tar.gz
-tar -xzf wordpress-5.1.1.tar.gz
-cp -r wordpress/* /var/www/html/
-rm -rf wordpress
-rm -rf wordpress-5.1.1.tar.gz
-chmod -R 755 wp-content
-chown -R apache:apache wp-content
-service httpd start
-chkconfig httpd on
+
+# sleep until instance is ready
+until [[ -f /var/lib/cloud/instance/boot-finished ]]; do
+  sleep 1
+done
+
+# install nginx
+sudo apt-get update
+sudo apt-get -y install nginx
+
+# make sure nginx is started
+sudo service nginx start
+sudo systemctl enable nginx

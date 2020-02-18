@@ -8,16 +8,21 @@ resource "aws_instance" "example" {
   instance_type = "a1.medium"
   key_name      = aws_key_pair.mykey.key_name
 
-
   provisioner "file" {
     source      = "script.sh"
     destination = "/tmp/script.sh"
   }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/script.sh",
       "sudo /tmp/script.sh"
     ]
+  }
+
+  provisioner "file" {
+    source      = "wp-config.php"
+    destination = "/tmp/wp-config.php"
   }
   connection {
     user        = var.INSTANCE_USERNAME
