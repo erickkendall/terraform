@@ -25,7 +25,8 @@ module "my-service" {
   memory_reservation  = "1024"
   log_group           = "my-log-group"
   desired_count       = 2
-  alb_arn             = module.my-alb.alb_arn
+#  alb_arn             = module.my-alb.alb_arn
+  alb_arn             = module.my-alb.lb_arn
 }
 module "my-alb" {
   source             = "github.com/in4it/terraform-modules/modules/alb"
