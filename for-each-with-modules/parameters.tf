@@ -8,7 +8,7 @@ locals {
 
 module "parameters" {
   for_each = local.my_parameters
-  source = "./ssh-parameter"
+  source = "./ssm-parameter"
   name = each.key
   value = each.value
 }
@@ -24,3 +24,6 @@ module "parameters" {
 # }
 # then value = lookup (each.value, "something", "") - you need a 3rd value in case not found
 
+output "all-my-parameters" {
+  value = { for k, parameter in module.parameters: k => parameter.arn }
+}
