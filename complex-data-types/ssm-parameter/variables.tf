@@ -1,7 +1,7 @@
 variable "parameters" {
   type = list(object( { 
     prefix = string
-    parameters = object ( {
+    parameters = list(object ( {
       name = string
       value = string
     } )
