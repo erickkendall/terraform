@@ -18,9 +18,6 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
-variable "ssh_private_key" {
-  description = "PEM file used to log into EC2 instances."
-  default     = "mykeypar.pem"
+variable "key_name" {
+  default = "mykey"
 }
-
-

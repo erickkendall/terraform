@@ -15,7 +15,6 @@ locals {
       description = "Ingress rules for port 22."
   }]
 }
-
 resource "aws_security_group" "sg" {
   name        = "CustomSG"
   description = "Allow TLS incoming traffic."
