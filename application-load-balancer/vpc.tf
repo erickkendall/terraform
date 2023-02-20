@@ -83,10 +83,10 @@ resource "aws_route_table" "private_rt" {
 resource "aws_route" "private_route" {
   route_table_id         = aws_route_table.private_rt.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.igw.id
+  gateway_id             = aws_nat_gateway.nat_gateway.id
 }
 
-# Associate public subnets with public route table 
+# Associate private subnets with public route table 
 resource "aws_route_table_association" "private_rt_association" {
   count          = length(aws_subnet.private_subnet) == 3 ? 3 : 0 #  If there are fewer than 3 elements in the list, Terraform will create no instances.
   route_table_id = aws_route_table.private_rt.id
@@ -95,19 +95,17 @@ resource "aws_route_table_association" "private_rt_association" {
 
 # Create Elastic IP for NAT Gateway
 resource "aws_eip" "eip" {
-  count            = length(aws_subnet.public_subnet.*.id)
   public_ipv4_pool = "amazon"
   vpc              = true
   tags = {
-    Name = "EIP-${count.index}"
+    Name = "EIP"
   }
 }
 # Create a NAT Gateway 
 resource "aws_nat_gateway" "nat_gateway" {
-  count         = length(aws_eip.eip.*.id)
-  allocation_id = element(aws_eip.eip.*.id, count.index)
-  subnet_id     = element(aws_subnet.public_subnet.*.id, count.index)
+  allocation_id = aws_eip.eip.id
+  subnet_id     = aws_subnet.public_subnet[0].id
   tags = {
-    Name = "nat-gateway-${count.index}"
+    Name = "nat-gateway"
   }
 }

@@ -20,7 +20,7 @@ resource "aws_instance" "instance" {
   ami             = data.aws_ami.ubuntu.id
   instance_type   = var.instance_type
   subnet_id       = element(aws_subnet.private_subnet.*.id, count.index)
-  security_groups = [aws_security_group.sg.arn]
+  security_groups = [aws_security_group.sg.id]
   key_name        = aws_key_pair.generated_key.key_name
 
   user_data = <<EOF
