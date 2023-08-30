@@ -125,6 +125,19 @@ variable "subtractvar" {
   default = [["a","b","c"], ["a","f","g"]]
 }
 
+variable "somefile" {
+  type = string
+  default = "/var/logs/some.log"
+}
+
+variable "testlistmap" {
+  type = map
+  default = {
+    "one": [1,2,3],
+    "two": [3,4,5]
+  }
+}
+
 # abs
 # min
 # max

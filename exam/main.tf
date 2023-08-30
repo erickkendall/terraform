@@ -120,6 +120,9 @@ output "indexexample" {
 output "keuexample" {
   value = keys(var.map_example)
 }
+output "valueexample" {
+  value = values(var.map_example)
+}
 output "flattenexample" {
   value = flatten(var.flattenexample)
 }
@@ -159,6 +162,47 @@ output "setsubtractexample" {
   value = setsubtract(var.subtractvar,var.intersectvar)
 }
 
+output "setunionexample" {
+  value = setunion(var.subtractvar,var.intersectvar)
+}
+
+output "sliceexample" {
+  value = slice(var.intersectvar,1,3)
+}
+
+output "sortexample" {
+  value = sort(var.chunklistexample)
+}
+
+output "basenameexample" {
+  value = basename(var.somefile)
+}
+output "dirnameexample" {
+  value = dirname(var.somefile)
+}
+
+output "pathexpandexample" {
+  value = pathexpand("~/.ssh/id_rsa.pub")
+}
+output "abspathexample" {
+  value = format("This is the absolute path %s", abspath(path.root))
+}
+
+output "templateexample" {
+  value = templatefile("/home/ekendall/terraform/exam/network.tpl", { port = 8080, ip_addrs = ["10.0.0.1","10.0.0.2"] } )
+}
+
+# sum
+# transpose 
+# zipmap
+# file 
+# fileexists
+# fileset
+# filebase64
+
+# encode and decode
+
+
 # " items: ${indent(2,"[\n foo,\n bar\n]\n")}"
 # join ("", ["foo","bar","apple"]
 # regex
@@ -171,3 +215,16 @@ output "setsubtractexample" {
 # title(string) # capitalize start of word
 # trim(string, expression)
 # trimprefix(string, expression)
+
+
+locals {
+  vm = csvdecode(file("./vm.csv"))
+}
+
+output "val" {
+  value = { for k,v in local.vm : k => v }
+}
+
+#output "val_for_each" {
+#  value = { for_each vm in local.vm : vm.VMName => vm }
+#}
