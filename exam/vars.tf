@@ -2,6 +2,10 @@ variable "apple" {
   type    = string
   default = "apple"
 }
+variable "name" {
+  type    = string
+  default = "Erick"
+}
 
 variable "lst" {
   type    = list(any)
@@ -82,59 +86,59 @@ variable "chompexample" {
 }
 
 variable "splitexample" {
-  type = string
-  default = "one,two,three" 
+  type    = string
+  default = "one,two,three"
 }
 
 variable "trimspaceexample" {
-  type = string
+  type    = string
   default = " this has to many spaces   "
 }
 
 variable "alltrueexample" {
-  type = list
-  default = [true,false]
+  type    = list(any)
+  default = [true, false]
 }
 
 variable "chunklistexample" {
-  type = list
-  default = ["one","two","three","four","five","six"]
+  type    = list(any)
+  default = ["one", "two", "three", "four", "five", "six"]
 }
 
 variable "concatexample" {
-  type = list
-  default = ["one","two", "", "", "three","four","five","six", ""]
+  type    = list(any)
+  default = ["one", "two", "", "", "three", "four", "five", "six", ""]
 }
 
 variable "flattenexample" {
-  type = list
-  default = [ [1,3,5], ["one","two","three"], ["apple","orange"] ]
+  type    = list(any)
+  default = [[1, 3, 5], ["one", "two", "three"], ["apple", "orange"]]
 }
 
 variable "emptylist" {
-  type = list
+  type    = list(any)
   default = []
 }
 
 variable "intersectvar" {
-  type = list
-  default = [["a","b","c"], ["a","f","g"],["a","b","x"]]
+  type    = list(any)
+  default = [["a", "b", "c"], ["a", "f", "g"], ["a", "b", "x"]]
 }
 variable "subtractvar" {
-  type = list
-  default = [["a","b","c"], ["a","f","g"]]
+  type    = list(any)
+  default = [["a", "b", "c"], ["a", "f", "g"]]
 }
 
 variable "somefile" {
-  type = string
+  type    = string
   default = "/var/logs/some.log"
 }
 
 variable "testlistmap" {
-  type = map
+  type = map(any)
   default = {
-    "one": [1,2,3],
-    "two": [3,4,5]
+    "one" : [1, 2, 3],
+    "two" : [3, 4, 5]
   }
 }
 

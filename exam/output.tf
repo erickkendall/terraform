@@ -94,7 +94,7 @@ output "anytrueexample" {
 }
 
 output "chunklistexample" {
-  value = chunklist(var.chunklistexample,2)
+  value = chunklist(var.chunklistexample, 2)
 }
 
 output "concatlistexample" {
@@ -109,12 +109,19 @@ output "distinctexample" {
   value = distinct(var.concatexample)
 }
 
-output "elementexample" {
-  value = element(var.concatexample,3)
+output "elementexampleone" {
+  value = element(var.concatexample, 3)
+}
+output "elementexampletwo" {
+  value = element(["a", "b", "c", "d", "e"], 3)
 }
 
 output "indexexample" {
-  value = index(var.chunklistexample,"three")
+  value = format("This is the string %s and this is the result %s", var.chunklistexample, index(var.chunklistexample, "three"))
+}
+
+output "indexexampletwo" {
+  value = index(["a", "b", "c"], "b")
 }
 
 output "keuexample" {
@@ -131,13 +138,13 @@ output "lengthexample" {
 }
 
 output "lookupexample" {
-  value = lookup(var.map_example, "one", "one not there") 
+  value = lookup(var.map_example, "one", "one not there")
 }
 
 # matchkeys
 
 output "mergeexample" {
-  value = merge(var.map_example,var.another_map_example)
+  value = merge(var.map_example, var.another_map_example)
 }
 
 # one returns the first element from a list of one
@@ -148,7 +155,7 @@ output "oneexample" {
 }
 
 output "rangeexample" {
-  value = range(3,9,2)
+  value = range(3, 9, 2)
 }
 
 output "reverseexample" {
@@ -159,15 +166,15 @@ output "intersectexample" {
   value = setintersection(var.intersectvar)
 }
 output "setsubtractexample" {
-  value = setsubtract(var.subtractvar,var.intersectvar)
+  value = setsubtract(var.subtractvar, var.intersectvar)
 }
 
 output "setunionexample" {
-  value = setunion(var.subtractvar,var.intersectvar)
+  value = setunion(var.subtractvar, var.intersectvar)
 }
 
 output "sliceexample" {
-  value = slice(var.intersectvar,1,3)
+  value = slice(var.intersectvar, 1, 3)
 }
 
 output "sortexample" {
@@ -189,7 +196,7 @@ output "abspathexample" {
 }
 
 output "templateexample" {
-  value = templatefile("/home/ekendall/terraform/exam/network.tpl", { port = 8080, ip_addrs = ["10.0.0.1","10.0.0.2"] } )
+  value = templatefile("/home/ekendall/terraform/exam/network.tpl", { port = 8080, ip_addrs = ["10.0.0.1", "10.0.0.2"] })
 }
 
 # sum
@@ -222,9 +229,53 @@ locals {
 }
 
 output "val" {
-  value = { for k,v in local.vm : k => v }
+  value = { for k, v in local.vm : k => v }
 }
 
 #output "val_for_each" {
 #  value = { for_each vm in local.vm : vm.VMName => vm }
 #}
+
+
+# abs
+output "abs1" {
+  value = abs(34)
+}
+# abs will flip value
+output "abs2" {
+  value = abs(-12)
+}
+# floor round down to the nearest whole number
+output "floor1" {
+  value = floor(4.9)
+}
+# ceil round up to the nearest whole number
+output "celil1" {
+  value = ceil(4.9)
+}
+
+# log
+output "log1" {
+  value = log(50, 10)
+}
+
+# min
+output "min1" {
+  value = min(1, 2, 3)
+}
+# max use ... to expand the collection to individual arguments:
+output "max1" {
+  value = max([1, 2, 3]...)
+}
+
+output "parseintexample" {
+  value = parseint("1111", 2)
+}
+
+output "powerexample" {
+  value = pow(3, 2)
+}
+
+output "signumexample" {
+  value = "{ signum(3) }"
+}
