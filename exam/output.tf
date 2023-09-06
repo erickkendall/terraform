@@ -55,9 +55,6 @@ output "concatlistexample" {
 }
 
 
-output "distinctexample" {
-  value = distinct(var.concatexample)
-}
 
 output "elementexampleone" {
   value = element(var.concatexample, 3)
@@ -80,22 +77,10 @@ output "keuexample" {
 output "valueexample" {
   value = values(var.map_example)
 }
-output "flattenexample" {
-  value = flatten(var.flattenexample)
-}
-output "lengthexample" {
-  value = length(var.flattenexample)
-}
 
-output "lookupexample" {
-  value = lookup(var.map_example, "one", "one not there")
-}
 
 # matchkeys
 
-output "mergeexample" {
-  value = merge(var.map_example, var.another_map_example)
-}
 
 # one returns the first element from a list of one
 # or null if the list is empty  returns an error
@@ -104,13 +89,6 @@ output "oneexample" {
   value = one(var.emptylist)
 }
 
-output "rangeexample" {
-  value = range(3, 9, 2)
-}
-
-output "reverseexample" {
-  value = reverse(var.random)
-}
 
 output "intersectexample" {
   value = setintersection(var.intersectvar)
@@ -119,17 +97,6 @@ output "setsubtractexample" {
   value = setsubtract(var.subtractvar, var.intersectvar)
 }
 
-output "setunionexample" {
-  value = setunion(var.subtractvar, var.intersectvar)
-}
-
-output "sliceexample" {
-  value = slice(var.intersectvar, 1, 3)
-}
-
-output "sortexample" {
-  value = sort(var.chunklistexample)
-}
 
 output "basenameexample" {
   value = basename(var.somefile)
