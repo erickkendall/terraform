@@ -26,13 +26,6 @@ output "mars_two" {
   value = var.worlds_splat[*].mars_name
 }
 
-output "joinexample" {
-  value = join(",", var.joinexample)
-}
-
-output "replaceexample" {
-  value = replace(var.helloworld, "/w.*d/", "everybody")
-}
 
 output "makelower" {
   value = lower(var.allupper)
@@ -42,37 +35,6 @@ output "makeupper" {
   value = upper(var.alllower)
 }
 
-output "chompexample" {
-  value = chomp(var.chompexample)
-}
-
-output "formatexample" {
-  value = format("This string is all upper case, %s", var.allupper)
-}
-
-output "regexexample" {
-  value = regex("Hello", var.helloworld)
-}
-
-output "splitexample" {
-  value = split(",", var.splitexample)
-}
-
-output "strrevexample" {
-  value = strrev(var.splitexample)
-}
-
-output "substrexample" {
-  value = substr(var.helloworld, 1, 4)
-}
-
-output "titleexample" {
-  value = title(var.helloworld)
-}
-
-output "trimexample" {
-  value = trim(var.helloworld, "!")
-}
 
 output "trimprefix" {
   value = trim(var.helloworld, "Hello")
@@ -86,24 +48,12 @@ output "trimspace" {
   value = trimspace(var.trimspaceexample)
 }
 
-output "alltrueexample" {
-  value = alltrue(var.alltrueexample)
-}
-output "anytrueexample" {
-  value = anytrue(var.alltrueexample)
-}
 
-output "chunklistexample" {
-  value = chunklist(var.chunklistexample, 2)
-}
 
 output "concatlistexample" {
   value = concat(var.concatexample)
 }
 
-output "containsexample" {
-  value = contains(var.chunklistexample, "one")
-}
 
 output "distinctexample" {
   value = distinct(var.concatexample)
@@ -116,9 +66,9 @@ output "elementexampletwo" {
   value = element(["a", "b", "c", "d", "e"], 3)
 }
 
-output "indexexample" {
-  value = format("This is the string %s and this is the result %s", var.chunklistexample, index(var.chunklistexample, "three"))
-}
+#output "indexexample" {
+#  value = format("This is the string %s and this is the result %s", var.chunklistexample, index(var.chunklistexample, "three"))
+#}
 
 output "indexexampletwo" {
   value = index(["a", "b", "c"], "b")
@@ -266,10 +216,6 @@ output "min1" {
 # max use ... to expand the collection to individual arguments:
 output "max1" {
   value = max([1, 2, 3]...)
-}
-
-output "parseintexample" {
-  value = parseint("1111", 2)
 }
 
 output "powerexample" {

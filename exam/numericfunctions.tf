@@ -9,7 +9,7 @@ output "ceilexample" {
 }
 
 # floor - return the closet whole number that is LESS or equal to the given value
-output "ceilexample" {
+output "floorexample" {
   value = floor(4.9)
 }
 
