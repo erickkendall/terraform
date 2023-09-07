@@ -6,3 +6,7 @@ locals {
     "cluster-4"
   ]
 }
+
+locals {
+  instances = csvdecode(file("demo.csv"))
+}
