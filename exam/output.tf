@@ -98,22 +98,9 @@ output "setsubtractexample" {
 }
 
 
-output "basenameexample" {
-  value = basename(var.somefile)
-}
-output "dirnameexample" {
-  value = dirname(var.somefile)
-}
-
-output "pathexpandexample" {
-  value = pathexpand("~/.ssh/id_rsa.pub")
-}
-output "abspathexample" {
-  value = format("This is the absolute path %s", abspath(path.root))
-}
 
 output "templateexample" {
-  value = templatefile("/home/ekendall/terraform/exam/network.tpl", { port = 8080, ip_addrs = ["10.0.0.1", "10.0.0.2"] })
+  value = templatefile("/home/ekendall/terraform/exam/backends.tftpl", { port = 8080, ip_addrs = ["10.0.0.1", "10.0.0.2"] })
 }
 
 # sum
@@ -191,4 +178,14 @@ output "powerexample" {
 
 output "signumexample" {
   value = "{ signum(3) }"
+}
+output "democsv" {
+  value = { for inst in local.instances : inst.VM_Name => inst }
+}
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+
+output "caller_arn" {
+  value = data.aws_caller_identity.current.arn
 }
